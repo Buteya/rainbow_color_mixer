@@ -169,311 +169,316 @@ class _MyHomePageState extends State<MyHomePage> {
                 ? const Center(
                     child: CircularProgressIndicator(),
                   )
-                : Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      const SizedBox(
-                        height: 50,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          showResults
-                              ? Column(
-                                  children: [
-                                    Container(
-                                      width: 400,
-                                      height: 400,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(15),
-                                        color: Color(mixedColor),
-                                        boxShadow: const [
-                                          BoxShadow(
-                                            offset: Offset(1.5, 2.5),
-                                            color: Colors.black12,
-                                            blurRadius: 2,
-                                            spreadRadius: 1,
-                                            blurStyle: BlurStyle.normal,
+                : Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        const SizedBox(
+                          height: 50,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            showResults
+                                ? Column(
+                                    children: [
+                                      Container(
+                                        width: 400,
+                                        height: 400,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(15),
+                                          color: Color(mixedColor),
+                                          boxShadow: const [
+                                            BoxShadow(
+                                              offset: Offset(1.5, 2.5),
+                                              color: Colors.black12,
+                                              blurRadius: 2,
+                                              spreadRadius: 1,
+                                              blurStyle: BlurStyle.normal,
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        height: 20,
+                                      ),
+                                      Row(
+                                        children: [
+                                          const Text(
+                                            "Color code:",
+                                            style: TextStyle(
+                                              fontSize: 25,
+                                              fontWeight: FontWeight.w700,
+                                            ),
+                                          ),
+                                          const SizedBox(
+                                            width: 10,
+                                          ),
+                                          Text(
+                                            newColor,
+                                            style: const TextStyle(
+                                              fontSize: 17,
+                                              fontWeight: FontWeight.w500,
+                                              wordSpacing: 20,
+                                            ),
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  )
+                                : Row(
+                                    children: [
+                                      Column(
+                                        children: [
+                                          Container(
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(15),
+                                              color: Color(
+                                                rainbowColor,
+                                              ),
+                                              boxShadow: const [
+                                                BoxShadow(
+                                                  offset: Offset(1.5, 2.5),
+                                                  color: Colors.black12,
+                                                  blurRadius: 2,
+                                                  spreadRadius: 1,
+                                                  blurStyle: BlurStyle.normal,
+                                                ),
+                                              ],
+                                            ),
+                                            width: 320,
+                                            height: 320,
+                                          ),
+                                          const SizedBox(
+                                            height: 20,
+                                          ),
+                                          OutlinedButton(
+                                            onPressed: _pickColor,
+                                            child: const Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                Icon(Icons.list_rounded),
+                                                SizedBox(
+                                                  width: 12,
+                                                ),
+                                                Text("pick a color!!!"),
+                                              ],
+                                            ),
+                                          ),
+                                          const SizedBox(
+                                            height: 10,
+                                          ),
+                                          _showColorsRight
+                                              ? SizedBox(
+                                                  height: 100,
+                                                  width: 100,
+                                                  child: SingleChildScrollView(
+                                                    child: Column(
+                                                      children: [
+                                                        ...(rainbowColors).map(
+                                                          (color) {
+                                                            return InkWell(
+                                                              child: Row(
+                                                                children: [
+                                                                  CircleAvatar(
+                                                                    maxRadius:
+                                                                        8,
+                                                                    backgroundColor:
+                                                                        Color(color['colorValue']
+                                                                            as int),
+                                                                  ),
+                                                                  const SizedBox(
+                                                                    width: 8,
+                                                                  ),
+                                                                  Text(color[
+                                                                          'colorName']
+                                                                      as String)
+                                                                ],
+                                                              ),
+                                                              onTap: () {
+                                                                myFocusNode
+                                                                    .requestFocus();
+
+                                                                setState(() {
+                                                                  rainbowColor =
+                                                                      color['colorValue']
+                                                                          as int;
+                                                                  colorIndexLeft =
+                                                                      rainbowColors
+                                                                          .indexOf(
+                                                                              color);
+                                                                  print(
+                                                                      colorIndexLeft);
+                                                                });
+                                                              },
+                                                            );
+                                                          },
+                                                        )
+                                                      ],
+                                                    ),
+                                                  ),
+                                                )
+                                              : Container(),
+                                          const SizedBox(
+                                            height: 30,
                                           ),
                                         ],
                                       ),
-                                    ),
-                                    const SizedBox(
-                                      height: 20,
-                                    ),
-                                    Row(
-                                      children: [
-                                        const Text(
-                                          "Color code:",
-                                          style: TextStyle(
-                                            fontSize: 25,
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        ),
-                                        const SizedBox(
-                                          width: 10,
-                                        ),
-                                        Text(
-                                          newColor,
-                                          style: const TextStyle(
-                                            fontSize: 17,
-                                            fontWeight: FontWeight.w500,
-                                            wordSpacing: 20,
-                                          ),
-                                        ),
-                                      ],
-                                    )
-                                  ],
-                                )
-                              : Row(
-                                  children: [
-                                    Column(
-                                      children: [
-                                        Container(
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(15),
-                                            color: Color(
-                                              rainbowColor,
-                                            ),
-                                            boxShadow: const [
-                                              BoxShadow(
-                                                offset: Offset(1.5, 2.5),
-                                                color: Colors.black12,
-                                                blurRadius: 2,
-                                                spreadRadius: 1,
-                                                blurStyle: BlurStyle.normal,
-                                              ),
-                                            ],
-                                          ),
-                                          width: 320,
-                                          height: 320,
-                                        ),
-                                        const SizedBox(
-                                          height: 20,
-                                        ),
-                                        OutlinedButton(
-                                          onPressed: _pickColor,
-                                          child: const Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            mainAxisSize: MainAxisSize.min,
-                                            children: [
-                                              Icon(Icons.list_rounded),
-                                              SizedBox(
-                                                width: 12,
-                                              ),
-                                              Text("pick a color!!!"),
-                                            ],
-                                          ),
-                                        ),
-                                        const SizedBox(
-                                          height: 10,
-                                        ),
-                                        _showColorsRight
-                                            ? SizedBox(
-                                                height: 100,
-                                                width: 100,
-                                                child: SingleChildScrollView(
-                                                  child: Column(
-                                                    children: [
-                                                      ...(rainbowColors).map(
-                                                        (color) {
-                                                          return InkWell(
-                                                            child: Row(
-                                                              children: [
-                                                                CircleAvatar(
-                                                                  maxRadius: 8,
-                                                                  backgroundColor:
-                                                                      Color(color[
-                                                                              'colorValue']
-                                                                          as int),
-                                                                ),
-                                                                const SizedBox(
-                                                                  width: 8,
-                                                                ),
-                                                                Text(color[
-                                                                        'colorName']
-                                                                    as String)
-                                                              ],
-                                                            ),
-                                                            onTap: () {
-                                                              myFocusNode
-                                                                  .requestFocus();
-
-                                                              setState(() {
-                                                                rainbowColor =
-                                                                    color['colorValue']
-                                                                        as int;
-                                                                colorIndexLeft =
-                                                                    rainbowColors
-                                                                        .indexOf(
-                                                                            color);
-                                                                print(
-                                                                    colorIndexLeft);
-                                                              });
-                                                            },
-                                                          );
-                                                        },
-                                                      )
-                                                    ],
-                                                  ),
-                                                ),
-                                              )
-                                            : Container(),
-                                        const SizedBox(
-                                          height: 30,
-                                        ),
-                                      ],
-                                    ),
-                                    const SizedBox(
-                                      width: 30,
-                                    ),
-                                    Column(
-                                      children: [
-                                        Container(
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(15),
-                                            color: Color(
-                                              rainbowColorRight,
-                                            ),
-                                            boxShadow: const [
-                                              BoxShadow(
-                                                offset: Offset(1.5, 2.5),
-                                                color: Colors.black12,
-                                                blurRadius: 2,
-                                                spreadRadius: 1,
-                                                blurStyle: BlurStyle.normal,
-                                              ),
-                                            ],
-                                          ),
-                                          width: 320,
-                                          height: 320,
-                                        ),
-                                        const SizedBox(
-                                          height: 20,
-                                        ),
-                                        OutlinedButton(
-                                          onPressed: _pickColorRight,
-                                          child: const Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            mainAxisSize: MainAxisSize.min,
-                                            children: [
-                                              Icon(Icons.list_rounded),
-                                              SizedBox(
-                                                width: 12,
-                                              ),
-                                              Text("pick a color!!!"),
-                                            ],
-                                          ),
-                                        ),
-                                        const SizedBox(
-                                          height: 10,
-                                        ),
-                                        _showColors
-                                            ? SizedBox(
-                                                height: 100,
-                                                width: 100,
-                                                child: SingleChildScrollView(
-                                                  child: Column(
-                                                    children: [
-                                                      ...(rainbowColors).map(
-                                                        (color) {
-                                                          return InkWell(
-                                                            child: Row(
-                                                              children: [
-                                                                CircleAvatar(
-                                                                  maxRadius: 8,
-                                                                  backgroundColor:
-                                                                      Color(color[
-                                                                              'colorValue']
-                                                                          as int),
-                                                                ),
-                                                                const SizedBox(
-                                                                  width: 8,
-                                                                ),
-                                                                Text(color[
-                                                                        'colorName']
-                                                                    as String)
-                                                              ],
-                                                            ),
-                                                            onTap: () {
-                                                              myFocusNode
-                                                                  .requestFocus();
-
-                                                              setState(() {
-                                                                rainbowColorRight =
-                                                                    color['colorValue']
-                                                                        as int;
-                                                                colorIndexRight =
-                                                                    rainbowColors
-                                                                        .indexOf(
-                                                                            color);
-                                                                print(
-                                                                    colorIndexRight);
-                                                              });
-                                                            },
-                                                          );
-                                                        },
-                                                      )
-                                                    ],
-                                                  ),
-                                                ),
-                                              )
-                                            : Container(),
-                                        const SizedBox(
-                                          height: 30,
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                        ],
-                      ),
-                      showResults
-                          ? Column(
-                              children: [
-                                const SizedBox(
-                                  height: 30,
-                                ),
-                                FilledButton(
-                                  onPressed: _restColors,
-                                  child: const Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Text("Reset"),
-                                      SizedBox(
-                                        width: 18,
+                                      const SizedBox(
+                                        width: 30,
                                       ),
-                                      Icon(Icons.reset_tv_rounded),
+                                      Column(
+                                        children: [
+                                          Container(
+                                            decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(15),
+                                              color: Color(
+                                                rainbowColorRight,
+                                              ),
+                                              boxShadow: const [
+                                                BoxShadow(
+                                                  offset: Offset(1.5, 2.5),
+                                                  color: Colors.black12,
+                                                  blurRadius: 2,
+                                                  spreadRadius: 1,
+                                                  blurStyle: BlurStyle.normal,
+                                                ),
+                                              ],
+                                            ),
+                                            width: 320,
+                                            height: 320,
+                                          ),
+                                          const SizedBox(
+                                            height: 20,
+                                          ),
+                                          OutlinedButton(
+                                            onPressed: _pickColorRight,
+                                            child: const Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                Icon(Icons.list_rounded),
+                                                SizedBox(
+                                                  width: 12,
+                                                ),
+                                                Text("pick a color!!!"),
+                                              ],
+                                            ),
+                                          ),
+                                          const SizedBox(
+                                            height: 10,
+                                          ),
+                                          _showColors
+                                              ? SizedBox(
+                                                  height: 100,
+                                                  width: 100,
+                                                  child: SingleChildScrollView(
+                                                    child: Column(
+                                                      children: [
+                                                        ...(rainbowColors).map(
+                                                          (color) {
+                                                            return InkWell(
+                                                              child: Row(
+                                                                children: [
+                                                                  CircleAvatar(
+                                                                    maxRadius:
+                                                                        8,
+                                                                    backgroundColor:
+                                                                        Color(color['colorValue']
+                                                                            as int),
+                                                                  ),
+                                                                  const SizedBox(
+                                                                    width: 8,
+                                                                  ),
+                                                                  Text(color[
+                                                                          'colorName']
+                                                                      as String)
+                                                                ],
+                                                              ),
+                                                              onTap: () {
+                                                                myFocusNode
+                                                                    .requestFocus();
+
+                                                                setState(() {
+                                                                  rainbowColorRight =
+                                                                      color['colorValue']
+                                                                          as int;
+                                                                  colorIndexRight =
+                                                                      rainbowColors
+                                                                          .indexOf(
+                                                                              color);
+                                                                  print(
+                                                                      colorIndexRight);
+                                                                });
+                                                              },
+                                                            );
+                                                          },
+                                                        )
+                                                      ],
+                                                    ),
+                                                  ),
+                                                )
+                                              : Container(),
+                                          const SizedBox(
+                                            height: 30,
+                                          ),
+                                        ],
+                                      ),
                                     ],
                                   ),
-                                ),
-                              ],
-                            )
-                          : FilledButton(
-                              onPressed: _mixColors,
-                              child: const Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisSize: MainAxisSize.min,
+                          ],
+                        ),
+                        showResults
+                            ? Column(
                                 children: [
-                                  Text("Mix"),
-                                  SizedBox(
-                                    width: 18,
+                                  const SizedBox(
+                                    height: 30,
                                   ),
-                                  Icon(Icons.cyclone_rounded),
+                                  FilledButton(
+                                    onPressed: _restColors,
+                                    child: const Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Text("Reset"),
+                                        SizedBox(
+                                          width: 18,
+                                        ),
+                                        Icon(Icons.reset_tv_rounded),
+                                      ],
+                                    ),
+                                  ),
                                 ],
+                              )
+                            : FilledButton(
+                                onPressed: _mixColors,
+                                child: const Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Text("Mix"),
+                                    SizedBox(
+                                      width: 18,
+                                    ),
+                                    Icon(Icons.cyclone_rounded),
+                                  ],
+                                ),
                               ),
-                            ),
-                    ],
+                      ],
+                    ),
                   ),
           ),
         ),

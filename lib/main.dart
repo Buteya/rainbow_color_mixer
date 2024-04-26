@@ -165,6 +165,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
             child: Center(
               child: showloadingSpinner
                   ? const Center(

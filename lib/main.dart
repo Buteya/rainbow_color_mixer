@@ -171,6 +171,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   )
                 : Column(
                     mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
                       const SizedBox(
                         height: 50,

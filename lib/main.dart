@@ -166,7 +166,9 @@ class _MyHomePageState extends State<MyHomePage> {
         child: SingleChildScrollView(
           child: Center(
             child: showloadingSpinner
-                ? const CircularProgressIndicator()
+                ? const Center(
+                    child: CircularProgressIndicator(),
+                  )
                 : Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
